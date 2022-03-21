@@ -21,12 +21,15 @@ private:
 public:
 
     Grid(int, int); //iniciar todos muertos
-    ~Grid();
+    virtual ~Grid();
 
-    void nextGeneration();  // actualizar celulas
-    const Cell& getCell(int, int) const;
-    
     void insertCellStatus();    // poner celulas vivas
+    
+    virtual Cell& getCell(int, int) = 0;
+    virtual const Cell& getCell(int, int) const = 0;
+    
+    void nextGeneration();  // actualizar celulas
+    
     void print(std::ostream& os = std::cout);
 
     std::vector<std::vector<Cell*>*> getMalla() const { return _malla; }

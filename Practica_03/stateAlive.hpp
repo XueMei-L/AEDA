@@ -12,6 +12,8 @@ class StateAlive: public State
         int neighbors(const Grid&, int, int);
         State* nextState();
         char getState();
-}
+    private:
+        int _neighbors;
+};
 
 #endif //_StateAlive_

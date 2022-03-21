@@ -1,18 +1,33 @@
 #include "stateDead.hpp"
-
+#include "stateAlive.hpp"
 
 StateDead::StateDead(){}
 
 StateDead::~StateDead(){}
 
 
-int StateDead::neighbors(const Grid& malla, int i, int j);
-{   
-    
+int StateDead::neighbors(const Grid& malla, int i, int j)
+{
+    _neighbors = 0;
+
+    int posActualI = i;
+    int posActualJ = j;
+
+    for(int i = posActualI-1; i <= posActualI + 1; i++) {
+        for(int i = posActualJ -1; j <= posActualJ +1; j++) {
+            if(i != posActualI || j != posActualJ) {
+                if(malla.getMalla()[i]->data()[j]->getState() == "D") {
+                    _neighbors++;
+                }
+            }
+        }
+    }
+
+    return _neighbors;
 }
 
 
-char StateDead::getState() const
+char StateDead::getState()
 {
     return 'D';
 }
@@ -20,15 +35,11 @@ char StateDead::getState() const
 
 State* StateDead::nextState()
 {
-
-    if(_neighbors >= 2) {
-    return new StateDead();
-        state = "huevo";
-    }else{
-        state = "dead";
+    if(_neighbors == 3) {
+        return new StateAlive();
     }
 
-    return state;
+    return new StateDead();
 }
 
 

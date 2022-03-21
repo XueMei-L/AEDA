@@ -9,9 +9,11 @@ class StateDead: public State
     public:
         StateDead();
         ~StateDead();
-        int neighbors(const, int, int);
+        int neighbors(const Grid&, int, int);
         State* nextState();
         char getState();
-}
+    private:
+        int _neighbors;
+};
 
 #endif //_StateDead_

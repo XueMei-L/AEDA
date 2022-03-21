@@ -5,7 +5,7 @@
  
 CC = g++
 CFLAGS = -Wall -g
-DEPS = cell.h grid.h
+DEPS = cell.hpp grid.hpp 
 OBJ = cell.o grid.o main.o
 
 # *****************************************************
