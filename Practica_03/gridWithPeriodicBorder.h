@@ -1,23 +1,28 @@
+#pragma once //_GridWithPeriodicBorder_
+
+#ifndef _GridWithPeriodicBorder_
+#define _GridWithPeriodicBorder_
 #include "grid.h"
 
 class GridWithPeriodicBorder: public Grid
 {
-    private:
-        /* data */
     public:
-        GridWithPeriodicBorder(/* args */);
-        ~GridWithPeriodicBorder();
+        GridWithPeriodicBorder();
+        GridWithPeriodicBorder(int, int);
+        ~GridWithPeriodicBorder() override;
 
         void insertCellStatus();    // poner celulas vivas
         
-        Cell& getCell(int, int);
-        const Cell& getCell(int, int) const;
+        void nextGeneration();      // actualizar los estados
+
+        Cell& getCell(int, int) override;
+        const Cell& getCell(int, int) const override;
+        std::vector<std::vector<Cell*>*> getMalla() const { return _mallaFrontera; }
+    
+    private:
+        // std::vector<std::vector<Cell*>*> _malla;
+        int _rows, _cols;
+        std::vector<std::vector<Cell*>*> _mallaFrontera;
 };
 
-GridWithPeriodicBorder::GridWithPeriodicBorder(/* args */)
-{
-}
-
-GridWithPeriodicBorder::~GridWithPeriodicBorder()
-{
-}
+#endif //_GridWithPeriodicBorder_

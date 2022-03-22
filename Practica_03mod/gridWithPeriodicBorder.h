@@ -1,15 +1,15 @@
-#pragma once //_GridWithOpenBorder_
+#pragma once //_GridWithPeriodicBorder_
 
-#ifndef _GridWithOpenBorder_
-#define _GridWithOpenBorder_
+#ifndef _GridWithPeriodicBorder_
+#define _GridWithPeriodicBorder_
 #include "grid.h"
 
-class GridWithOpenBorder: public Grid
+class GridWithPeriodicBorder: public Grid
 {
     public:
-        GridWithOpenBorder();
-        GridWithOpenBorder(int, int);
-        ~GridWithOpenBorder() override;
+        GridWithPeriodicBorder();
+        GridWithPeriodicBorder(int, int);
+        ~GridWithPeriodicBorder() override;
 
         void insertCellStatus();    // poner celulas vivas
         
@@ -18,11 +18,15 @@ class GridWithOpenBorder: public Grid
         Cell& getCell(int, int) override;
         const Cell& getCell(int, int) const override;
         std::vector<std::vector<Cell*>*> getMalla() const { return _mallaFrontera; }
+        
+        void contar(int, int);
     
     private:
         // std::vector<std::vector<Cell*>*> _malla;
         int _rows, _cols;
         std::vector<std::vector<Cell*>*> _mallaFrontera;
+        int _neighborsHorizotalVertical;
+        int _neighborsDiagonalPriSec;
 };
 
-#endif //_GridWithOpenBorder_
+#endif //_GridWithPeriodicBorder_

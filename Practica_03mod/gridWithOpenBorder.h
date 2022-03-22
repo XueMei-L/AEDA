@@ -23,6 +23,7 @@ class GridWithOpenBorder: public Grid
         // std::vector<std::vector<Cell*>*> _malla;
         int _rows, _cols;
         std::vector<std::vector<Cell*>*> _mallaFrontera;
+
 };
 
 #endif //_GridWithOpenBorder_
