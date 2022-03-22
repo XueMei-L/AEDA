@@ -16,12 +16,15 @@
  ***************************************************************************/
 
 /* INCLUDES */
-#include "cell.hpp"
-#include "grid.hpp"
+#include "cell.h"
+#include "grid.h"
 
 // Constructor
-Cell::Cell(int state, std::pair<int, int> pos){
-    _state = state;
+
+Cell::Cell(){};
+
+Cell::Cell(State* StateInit, std::pair<int, int> pos){
+    _state = StateInit;
     _pos.first = pos.first;
     _pos.second = pos.second;
     _numNeighbors = 0;
@@ -74,17 +77,17 @@ int Cell::neighbors(const Grid& malla) {
 //updateState
 void Cell::updateState() {
 
-    int nextState = 0;
+    // int nextState = 0;
 
-    // If it is a 0 stat and number of neighbors is equal to 3, state = 1
-    if(getState() == 0 && _numNeighbors == 3) { nextState = 1; }
+    // // If it is a 0 stat and number of neighbors is equal to 3, state = 1
+    // if(getState() == 0 && _numNeighbors == 3) { nextState = 1; }
     
-    // If it is a 1 state and number of neighbors is equal to 2 or 3, state = 1
-    else if(getState() == 1 && (_numNeighbors == 2 || _numNeighbors == 3)) { nextState = 1; }
+    // // If it is a 1 state and number of neighbors is equal to 2 or 3, state = 1
+    // else if(getState() == 1 && (_numNeighbors == 2 || _numNeighbors == 3)) { nextState = 1; }
     
-    // In other case, the state is 0
-    else { nextState = 0; }
+    // // In other case, the state is 0
+    // else { nextState = 0; }
 
-    // std::cout << "\nnext state is:" << nextState;
-    setState(nextState);
+    // // std::cout << "\nnext state is:" << nextState;
+    // setState(nextState);
 }

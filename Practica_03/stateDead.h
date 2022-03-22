@@ -8,10 +8,10 @@ class StateDead: public State
 {
     public:
         StateDead();
-        ~StateDead();
-        int neighbors(const Grid&, int, int);
-        State* nextState();
-        char getState();
+        ~StateDead() override;
+        int neighbors(const Grid&, int, int)override;
+        State* nextState() override;
+        char getState() override;
     private:
         int _neighbors;
 };

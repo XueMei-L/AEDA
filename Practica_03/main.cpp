@@ -1,9 +1,9 @@
 #include <iostream>
-#include "cell.hpp"
-#include "grid.hpp"
-#include "gridWithOpenBorder.hpp"
-#include "gridWithPeriodicBorder.hpp"
-#include "gridWithNoBorder.hpp"
+#include "cell.h"
+#include "grid.h"
+#include "gridWithOpenBorder.h"
+#include "gridWithPeriodicBorder.h"
+#include "gridWithNoBorder.h"
 
 
 int main(int argc, char* argv[]) {
@@ -58,19 +58,18 @@ int main(int argc, char* argv[]) {
   }
 
   // Ask user to insert cell with alive state (1)
-  // ptr_Grid->insertCellStatus();
+  ptr_grid->insertCellStatus();
 
   // Print Grid
-  // ptr_Grid->print();
+  ptr_grid->print();
 
   // Recorrer los turnos y Imprimir por la pantalla
   for(int i = 0; i < turns; i++) {
     std::cout << "-----------------Iteracion:" << i << "----------------\n";
     
     // update
-    // ptr_Grid->nextGeneration();
-    
-    // ptr_Grid->print();
+    ptr_grid->nextGeneration();
+    ptr_grid->print();
   }
 
   // Delete pointer

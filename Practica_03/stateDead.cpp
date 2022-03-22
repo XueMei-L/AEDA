@@ -1,5 +1,5 @@
-#include "stateDead.hpp"
-#include "stateAlive.hpp"
+#include "stateDead.h"
+#include "stateAlive.h"
 
 StateDead::StateDead(){}
 

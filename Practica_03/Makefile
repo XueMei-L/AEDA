@@ -5,8 +5,8 @@
  
 CC = g++
 CFLAGS = -Wall -g
-DEPS = cell.hpp grid.hpp 
-OBJ = cell.o grid.o main.o
+DEPS = cell.h grid.h gridWithNoBorder.h gridWithOpenBorder.h gridWithPeriodicBorder.h
+OBJ = cell.o grid.o gridWithNoBorder.o gridWithOpenBorder.o gridWithPeriodicBorder.o main.o
 
 # *****************************************************
 # Targets needed to bring the executable up to date

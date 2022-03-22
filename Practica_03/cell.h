@@ -3,24 +3,26 @@
 #ifndef _CELL_
 #define _CELL_
 #include <iostream>
+#include "state.hpp"
 // Para que la clase Cell puede usar objetos de Grid
 
-enum Status { dead , alive };
+// enum Status { dead , alive };
 
 class Grid;
 
 class Cell
 {
     public:
-        Cell(int, std::pair<int, int>);
+        Cell();
+        Cell(State*, std::pair<int, int>);
         ~Cell();
         
         //Getter of state
-        int getState() const 
+        State* getState() const 
         { return _state; }
 
         //Setter of state
-        int setState(int state)
+        State* setState(State* state)
         { return _state = state; }
 
         //Update state
@@ -36,7 +38,7 @@ class Cell
     private:
         /* data */
         std::pair<int, int> _pos;
-        int _state;
+        State* _state;
         int _numNeighbors;
 
 };

@@ -1,4 +1,4 @@
-#include "grid.hpp"
+#include "grid.h"
 
 class GridWithPeriodicBorder: public Grid
 {

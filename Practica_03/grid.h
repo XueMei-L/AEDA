@@ -3,7 +3,7 @@
 #ifndef _GRID_
 #define _GRID_
 
-#include "cell.hpp"
+#include "cell.h"
 #include <vector>
 
 //Para usar la clase, directamente hace:
@@ -20,6 +20,7 @@ private:
 
 public:
 
+    Grid();
     Grid(int, int); //iniciar todos muertos
     virtual ~Grid();
 

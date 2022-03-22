@@ -1,12 +1,17 @@
-#include "grid.hpp"
-#include "cell.hpp"
-
+#include "grid.h"
+#include "cell.h"
+#include "state.hpp"
+#include "stateDead.h"
+#include "stateAlive.h"
 
 // Constructor
+Grid::Grid(){};
+
 Grid::Grid(int rows, int cols): _N(rows), _M(cols) {
     
     //Redimensionar la malla (+2 para los bordes)
     std::vector<Cell*> *aux;
+    // State* ptr_state = new StateDead();
 
     for(int i = 0; i < rows+2; i++) {
 
@@ -17,15 +22,18 @@ Grid::Grid(int rows, int cols): _N(rows), _M(cols) {
         }
         _malla.push_back(aux);
     }
-    // _malla = _mallaNew;
 }
 
 // Desctructor
 Grid::~Grid(){}
 
-// const Cell& Grid::getCell(int, int) {
-    
-// }
+Cell& Grid::getCell(int i, int j) {
+    getMalla()[i]->data()[j];
+}
+
+const Cell& Grid::getCell(int i, int j) const {
+    getMalla()[i]->data()[j];
+}
 
 // ask to user to cell state
 void Grid::insertCellStatus() {
@@ -49,7 +57,7 @@ void Grid::insertCellStatus() {
                       << "Please, introduce a correct posicion.\n";
         }else{
             std::cout << "pos[" << stateAliveI << "][" << stateAliveJ << "] = 1" << std::endl;
-            _malla[stateAliveI]->data()[stateAliveJ]->setState(1);
+            // _malla[stateAliveI]->data()[stateAliveJ]->setState(1);
             std::cout << "Do u want insert more posicion withe state ALIVE (yes, write 1 / no, write 0):";
             std::cin >> stopInsert;
         }
@@ -60,7 +68,8 @@ void Grid::nextGeneration() {
     // Counter neighbors
     for(int i = 1; i < _N+1; i++) {
         for(int j = 1; j < _M+1; j++) {
-            getMalla()[i] ->data()[j]->neighbors(*this);
+            getCell(i, j).neighbors(*this);
+            // getMalla()[i] ->data()[j]->neighbors(*this);
         }
     }
 
@@ -69,8 +78,8 @@ void Grid::nextGeneration() {
 
     for(int i = 1; i < _N+1; i++) {
         for(int j = 1; j < _M+1; j++) {
-            getMalla()[i]->data()[j]->updateState();
-            // _mallaNew[i]->data()[j]->updateState();
+            getCell(i, j).updateState();
+            // getMalla()[i]->data()[j]->updateState();
         }
     }
 }
@@ -83,7 +92,8 @@ void Grid::print(std::ostream& os) {
         for(int j = 1; j <= _M; j++) {
             //std::cout << "x ";
             std::cout << "[" << i << "][" << j << "]";
-            _malla[i]->data()[j]->print(os);
+
+            // _malla[i]->data()[j]->print(os);
         }
         os << "\n";
     }
