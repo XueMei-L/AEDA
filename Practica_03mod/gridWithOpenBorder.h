@@ -20,7 +20,6 @@ class GridWithOpenBorder: public Grid
         std::vector<std::vector<Cell*>*> getMalla() const { return _mallaFrontera; }
     
     private:
-        // std::vector<std::vector<Cell*>*> _malla;
         int _rows, _cols;
         std::vector<std::vector<Cell*>*> _mallaFrontera;
 

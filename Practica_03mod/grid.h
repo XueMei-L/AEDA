@@ -16,12 +16,11 @@ private:
     int _N; // Numero de filas
     int _M; // Numero de columas
     std::vector<std::vector<Cell*>*> _malla;
-    // std::vector<std::vector<Cell*>*> _mallaNew;
 
 public:
 
     Grid();
-    Grid(int, int); //iniciar todos muertos
+    Grid(int, int);             //iniciar todos muertos
     virtual ~Grid();
 
     void insertCellStatus();    // poner celulas vivas
@@ -29,7 +28,7 @@ public:
     virtual Cell& getCell(int, int) = 0;
     virtual const Cell& getCell(int, int) const = 0;
     
-    void nextGeneration();  // actualizar celulas
+    void nextGeneration();      // actualizar celulas
     
     void print(std::ostream& os = std::cout);
 

@@ -20,9 +20,11 @@ class GridWithPeriodicBorder: public Grid
         std::vector<std::vector<Cell*>*> getMalla() const { return _mallaFrontera; }
         
         void contar(int, int);
+
+        int getNeighborsHV() { return _neighborsHorizotalVertical; }
+        int getNeighborsDPS() { return _neighborsDiagonalPriSec; }
     
     private:
-        // std::vector<std::vector<Cell*>*> _malla;
         int _rows, _cols;
         std::vector<std::vector<Cell*>*> _mallaFrontera;
         int _neighborsHorizotalVertical;

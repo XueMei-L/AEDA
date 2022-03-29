@@ -23,12 +23,10 @@ GridWithPeriodicBorder::GridWithPeriodicBorder(int rows, int cols) :_rows(rows),
 GridWithPeriodicBorder::~GridWithPeriodicBorder(){
     // delete ptr_grid;
 }
-
-// void GridWithPeriodicBorder::insertCellStatus();    // poner celulas vivas
+    
 
 Cell& GridWithPeriodicBorder::getCell(int i, int j) {
     getMalla()[i]->data()[j];
-    // ptr_grid->getState();
 }
 
 const Cell& GridWithPeriodicBorder::getCell(int i, int j) const {
@@ -56,7 +54,7 @@ void GridWithPeriodicBorder::insertCellStatus() {
                       << "Please, introduce a correct posicion.\n";
         }else{
             std::cout << "pos[" << stateAliveI << "][" << stateAliveJ << "] = viva" << std::endl;
-            // _mallaFrontera[stateAliveI]->data()[stateAliveJ]->setState(new StateAlive());
+            _mallaFrontera[stateAliveI]->data()[stateAliveJ]->setState(new StateAlive());
             std::cout << "Do u want insert more posicion withe state ALIVE (yes, write 1 / no, write 0):";
             std::cin >> stopInsert;
         }
@@ -96,24 +94,32 @@ void GridWithPeriodicBorder::nextGeneration() {
     for(int i = 1; i < _rows+1; i++) {
         for(int j = 1; j < _cols+1; j++) {
             getCell(i, j).updateState();
+            contar(i, j);
         }
     }
-
-    // Llama la funcion count
     
 }
 
+
+
 // Mostrar al final del juego
 void GridWithPeriodicBorder::contar(int posI, int posJ) {
+    StateAlive* ptr = StateAlive();
+    
     for(int i = posI-1; i <= posI + 1; i++) {
         for(int j = posJ -1; j <= posJ +1; j++) {
             if(i != posI || j != posJ) {
                 if(((i == posI-1) && (j == posJ)) || ((i = posI+1) && (j== posJ)) || ((j == posJ-1) && (i = posI)) || ((j == posJ+1) && (i = posI))) {
-                    _neighborsHorizotalVertical++;
+                    if(getMalla()[i]->data()[j]->getState() == new StateAlive()) {
+                        _neighborsHorizotalVertical++;
+                    }
                 }else {
-                    _neighborsDiagonalPriSec++;
+                    if(getMalla()[i]->data()[j]->getState() == StateAlive()) {
+                        _neighborsDiagonalPriSec++;
+                    }
                 }
             }
         }
     }
 }
+

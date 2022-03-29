@@ -28,4 +28,4 @@ class GridWithNoBorder: public Grid
 };
 
 
-#endif _GridWithNoBorder_
+#endif //_GridWithNoBorder_

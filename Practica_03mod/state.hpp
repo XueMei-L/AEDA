@@ -24,8 +24,4 @@ State::State(/* args */){}
 
 State::~State(){}
 
-// int State::neighbors(const Grid& m, int i, int j) {
-
-// }
-
 #endif //_State_

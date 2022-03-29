@@ -18,6 +18,7 @@
 /* INCLUDES */
 #include "cell.h"
 #include "grid.h"
+#include "stateAlive.h"
 
 // Constructor
 
@@ -55,23 +56,23 @@ int Cell::neighbors(const Grid& malla) {
     _numNeighbors = 0;
 
     //Save actually posicion
-    int posActualI = _pos.first;
-    int posActualJ = _pos.second;
-    std::cout << "estoy en la pos[" << posActualI << "][" << posActualJ << "] \n";
+    // int posActualI = _pos.first;
+    // int posActualJ = _pos.second;
+    // std::cout << "estoy en la pos[" << posActualI << "][" << posActualJ << "] \n";
 
-    for(int i = posActualI-1; i <= posActualI+1; i++) {
-        for(int j = posActualJ-1; j <= posActualJ+1; j++) {
-            if(i != posActualI || j != posActualJ) {
-                if(malla.getMalla()[i]->data()[j]->getState() == 1){
-                    std::cout << "vecino[" << i << "][" << j << "] \n";
-                    _numNeighbors++;
-                }
-            }
-        }
-    }
-    std::cout << "hay " << _numNeighbors << " vecinos" << std::endl;
+    // for(int i = posActualI-1; i <= posActualI+1; i++) {
+    //     for(int j = posActualJ-1; j <= posActualJ+1; j++) {
+    //         if(i != posActualI || j != posActualJ) {
+    //             if(malla.getMalla()[i]->data()[j]->getState() == new StateAlive()) {
+    //                 std::cout << "vecino[" << i << "][" << j << "] \n";
+    //                 _numNeighbors++;
+    //             }
+    //         }
+    //     }
+    // }
+    // std::cout << "hay " << _numNeighbors << " vecinos" << std::endl;
 
-    return _numNeighbors;
+    // return _numNeighbors;
 }
 
 //updateState

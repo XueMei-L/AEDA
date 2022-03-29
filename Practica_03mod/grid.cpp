@@ -1,3 +1,4 @@
+
 #include "grid.h"
 #include "cell.h"
 #include "state.hpp"
@@ -56,8 +57,8 @@ void Grid::insertCellStatus() {
             std::cout << "Posicion error\n"
                       << "Please, introduce a correct posicion.\n";
         }else{
-            std::cout << "pos[" << stateAliveI << "][" << stateAliveJ << "] = 1" << std::endl;
-            // _malla[stateAliveI]->data()[stateAliveJ]->setState(1);
+            std::cout << "pos[" << stateAliveI << "][" << stateAliveJ << "] = celula viva" << std::endl;
+            _malla[stateAliveI]->data()[stateAliveJ]->setState('D');
             std::cout << "Do u want insert more posicion withe state ALIVE (yes, write 1 / no, write 0):";
             std::cin >> stopInsert;
         }
