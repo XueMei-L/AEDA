@@ -2,6 +2,7 @@
 
 // includes
 #include <iostream>
+
 #include "../include/dispersionFunction.h"
 #include "../include/explorationFunction.h"
 
@@ -21,6 +22,9 @@ using Key = long;
 // programa principal
 int main(int argc, char *argv[]) {
 
+    DispersionFunction<Key>* ptr_fd;
+    HashTable<Key>* ptr_hashtabla;
+
     // Preguntar el tañamo de la tabla
     int nTable;
     std::cout << "Introduzca el tamaño de la tabla:";
@@ -35,7 +39,6 @@ int main(int argc, char *argv[]) {
               << "\nTu elección es:"; 
     std::cin >> typeFuncDispersion;
 
-    DispersionFunction<Key>* ptr_fd;
 
     switch (typeFuncDispersion)
     {
@@ -64,7 +67,7 @@ int main(int argc, char *argv[]) {
     {
     case 1: 
     {
-        HashTable<Key>* ptr_hashtabla = new HashTable<Key>(nTable, ptr_fd);
+        ptr_hashtabla = new HashTable<Key>(nTable, ptr_fd);
     }
     break;
 
@@ -110,7 +113,7 @@ int main(int argc, char *argv[]) {
                 std::cout << "No es una opcion correcta, vuelva a indicar" << std::endl;
                 break;
             }
-            HashTable<Key>* ptr_hashtabla = new HashTable<Key>(nTable, ptr_fd, ptr_fe, blockSize);
+            ptr_hashtabla = new HashTable<Key>(nTable, ptr_fd, ptr_fe, blockSize);
 
             // default:
             //     std::cout << "No es una opcion correcta, vuelva a indicar" << std::endl;
@@ -119,5 +122,52 @@ int main(int argc, char *argv[]) {
         break;
     }
 
+    // Menu:
+    bool stop = false;
+    while (stop)
+    {
+        int choise;
+        std::cout << "Qué operacion deseas realizar:"
+                  << "\n1. Buscar()"
+                  << "\n2. Insertar()"
+                  << "\n3. Mostrar()"                  
+                  << "\n3. Salir del programa"
+                  << "Tu seleccion:";
+        std::cin >> choise;
+        switch (choise)
+        {
+        case 1: 
+        {
+            Key k;
+            std::cout << "Qué clave deseas buscar:";
+            std::cin >> k;
+            ptr_hashtabla->search(k);
+        }
+        break;
+        case 2:
+        {
+            Key k;
+            std::cout << "Qué clave deseas insertar:";
+            std::cin >> k;
+            ptr_hashtabla->insert(k);
+        }
+        break;
+        case 3:
+        {
+            std::cout << "----------------Mostrado la tabla Hash---------------" << std::endl;
+            ptr_hashtabla->show();
+        }
+        break;
+        case 4:
+            std::cout << "----------------Terminando el programa---------------" << std::endl;
+            delete ptr_fd;
+            delete ptr_hashtabla;
+            stop = true;
+            break;
+        default:
+            std::cout << "No es una opcion correcta, vuelva a elegir una opcion." << std::endl;
+            break;
+        } 
+    }
     return 0;
 }

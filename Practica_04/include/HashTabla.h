@@ -7,6 +7,7 @@
 #include "block.h"
 
 #include <vector>
+#include <iostream>
 
 template<class Key>
 class HashTable {
@@ -16,6 +17,7 @@ class HashTable {
         std::vector<Sequence<Key>*> vHashTable; 
         DispersionFunction<Key>* fd_;
         ExplorationFunction<Key>* fe_;
+        Sequence<Key>* ptr_seq_;
 
     public:
         HashTable(int, DispersionFunction<Key>*, ExplorationFunction<Key>* fe = nullptr, int blockSize = 0);
@@ -23,24 +25,24 @@ class HashTable {
 
         bool search(const Key& k) const;
         bool insert(const Key& k);
-        bool isFull() const;  
+        bool isFull() const;
+        void show() const;
 };
 
 template<class Key>
 HashTable<Key>::HashTable(int tableSize, DispersionFunction<Key>* fd, ExplorationFunction<Key>* fe, int blockSize) : tableSize_(tableSize) {
 
     if(fe == nullptr) {
-        Sequence<Key>* ptr_seq = new List<Key>();
+        ptr_seq_ = new List<Key>();
     }
 
     if(fe != nullptr) {
-        Sequence<Key>* ptr_seq = new Block<Key>(blockSize);
+        ptr_seq_ = new Block<Key>(blockSize);
     }
 
     for(int i = 0; i < tableSize;  i++) {
-        vHashTable.push_back(Sequence<Key>* ptr_seq = new List<Key>();)
+        vHashTable.push_back(ptr_seq_);
     }
-
 }
 
 template<class Key>
@@ -51,3 +53,11 @@ bool HashTable<Key>::search(const Key& k) const { return true; }
 
 template<class Key>
 bool HashTable<Key>::insert(const Key& k){ return true; }
+
+template<class Key>
+void HashTable<Key>::show() const {
+    for(int i = 0; i < tableSize_; i++) {
+        std::cout << vHashTable.at(i) << "|";
+    }
+    std::cout << "\n";
+}
