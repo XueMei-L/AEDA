@@ -1,10 +1,10 @@
 #ifndef FELINEAL_H
 #define FELINEAL_H
 
-#include "fdModule.h"
+#include "explorationFunction.h"
 
 template<class Key>
-class feLineal: public FunctionExploracion<Key>
+class feLineal: public ExplorationFunction<Key>
 {
 private:
     /* data */
@@ -18,7 +18,7 @@ public:
 };
 
 template<class Key>
-feLineal<Key>::feLineal():feLineal(){}
+feLineal<Key>::feLineal(){}
 
 
 template<class Key>

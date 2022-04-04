@@ -1,18 +1,18 @@
-#ifndef feRedispersion_H
-#define feRedispersion_H
+#ifndef FE_REDISPERSION_H
+#define FE_REDISPERSION_H
 
-#include "fdModule.h"
+#include "explorationFunction.h"
 
 template<class Key>
 
-class feRedispersion: public FunctionExploracion<Key>
+class feRedispersion: public ExplorationFunction<Key>
 {
 private:
-    feRedispersion<Key>*   feRedispersion_;       //funcion de dispersion
+    feRedispersion<Key>* feRedispersion_;       //funcion de dispersion
     int nCeldas_;
 public:
 
-    feRedispersion();
+    feRedispersion(int);
     ~feRedispersion();
 
     //Metodo derivado
@@ -20,11 +20,10 @@ public:
 };
 
 template<class Key>
-feRedispersion<Key>::feRedispersion():feRedispersion(int numCeldas): nCeldas_(numCeldas)
+feRedispersion<Key>::feRedispersion(int numCeldas): nCeldas_(numCeldas)
 {
     // feRedispersion_ = new dispersionPrima<Key>(nCeldas);
 }
-
 
 template<class Key>
 feRedispersion<Key>::~feRedispersion(){}
@@ -32,7 +31,7 @@ feRedispersion<Key>::~feRedispersion(){}
 
 template<class Key>
 unsigned feRedispersion<Key>::operator()(const Key& k, unsigned i) const {
-    return *feRedispersion_(k);
+    // return *feRedispersion_(k);
 }
 
-#endif //feRedispersion_H
+#endif //FE_REDISPERSION_H

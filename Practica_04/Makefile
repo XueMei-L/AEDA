@@ -1,31 +1,20 @@
-main: main.cpp
-	g++ -g -Wall -o main main.cpp
+CXX       := g++
+CXX_FLAGS := #-Wall
 
-# stack.o: stack.c stack.h
-# 	gcc -g -Wall -c stack.o stack.c
+BIN     := bin
+SRC     := src
+INCLUDE := include
+LIBRARIES	:= $(INCLUDE)/*.h
+EXECUTABLE  := main
+
+all: $(BIN)/$(EXECUTABLE)
+
+run:
+		clear
+		./$(BIN)/$(EXECUTABLE)
+
+$(BIN)/$(EXECUTABLE): $(SRC)/*.cpp
+		$(CXX) $(CXX_FLAGS) $^ -o $@ $(LIBRARIES)
 
 clean:
-	rm *.o main
-
-# 	# Makefile for Writing Make Files Example
- 
-# # *****************************************************
-# # Variables to control Makefile operation
- 
-# CC = g++
-# CFLAGS = -Wall -g
-# DEPS = cell.h grid.h
-# OBJ = cell.o grid.o main.o
-
-# # *****************************************************
-# # Targets needed to bring the executable up to date
-
-# %.o: %.cpp $(DEPS)
-# 	$(CC) -c -g -o $@ $^
-
-# # The main.o target can be written more simply
-# main: $(OBJ)
-# 	$(CC) ${CFLAGS} -g -o $@ $^
- 
-# clean:
-# 	rm *.o main
+		-rm $(BIN)/*

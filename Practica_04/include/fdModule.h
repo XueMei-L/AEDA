@@ -1,5 +1,5 @@
-#ifndef FD_MODULE
-#define FD_MODULE
+#ifndef FD_MODULE_H
+#define FD_MODULE_H
 
 #include "dispersionFunction.h"
 
@@ -28,4 +28,4 @@ unsigned fdModule<Key>::operator()(const Key& k) const {
     return k % tableSize;
 }
 
-#endif //FD_MODULE
+#endif //FD_MODULE_H

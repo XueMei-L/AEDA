@@ -1,11 +1,10 @@
 #ifndef feCuadratica_H
 #define feCuadratica_H
 
-#include "fdModule.h"
+#include "explorationFunction.h"
 
 template<class Key>
-
-class feCuadratica: public FunctionExploracion<Key>
+class feCuadratica: public ExplorationFunction<Key>
 {
 private:
     /* data */
@@ -19,7 +18,7 @@ public:
 };
 
 template<class Key>
-feCuadratica<Key>::feCuadratica():feCuadratica(){}
+feCuadratica<Key>::feCuadratica(){}
 
 
 template<class Key>

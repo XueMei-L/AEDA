@@ -1,5 +1,5 @@
-#ifndef FD_PSEUDORANDO
-#define FD_PSEUDORANDO
+#ifndef FD_PSEUDORANDO_H
+#define FD_PSEUDORANDO_H
 
 #include <stdlib.h>
 #include "dispersionFunction.h"
@@ -14,8 +14,8 @@ public:
 
     fdPseudorandom(const unsigned n);
     ~fdPseudorandom();
-    unsigned operator()(const Key& k) const;
 
+    unsigned operator()(const Key& k) const;
 };
 
 template<class Key>
@@ -26,7 +26,9 @@ fdPseudorandom<Key>::~fdPseudorandom(){}
 
 template<class Key>
 unsigned fdPseudorandom<Key>::operator()(const Key& k) const {
-    return srand(k);
+    srand(k);
+    return rand() % tableSize;
+    // return srand(k);
 }
 
-#endif //FD_PSEUDORANDO
+#endif //FD_PSEUDORANDO_H

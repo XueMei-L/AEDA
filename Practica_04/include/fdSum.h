@@ -1,5 +1,5 @@
-#ifndef FD_SUM
-#define FD_SUM
+#ifndef FD_SUM_H
+#define FD_SUM_H
 
 #include "dispersionFunction.h"
 
@@ -26,7 +26,17 @@ fdSum<Key>::~fdSum(){}
 template<class Key>
 unsigned fdSum<Key>::operator()(const Key& k) const {
     // Sumatorio de las posiciones dentro de K y mod size;
-    // return
+
+    int d = 0;
+    int x = k;
+
+    while(x > 0) {
+        int y = x % 10;
+        d += y;
+        x /= 10; 
+    }
+
+    return (d % tableSize);
 }
 
-#endif //FD_SUM
+#endif //FD_SUM_H
