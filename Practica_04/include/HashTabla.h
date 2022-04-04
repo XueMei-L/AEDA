@@ -6,11 +6,14 @@
 #include "list.h"
 #include "block.h"
 
+#include <vector>
+
 template<class Key>
 class HashTable {
     private:
         int tableSize_;
         int blockSize;
+        std::vector<Sequence<Key>*> vHashTable; 
         DispersionFunction<Key>* fd_;
         ExplorationFunction<Key>* fe_;
 
@@ -33,6 +36,11 @@ HashTable<Key>::HashTable(int tableSize, DispersionFunction<Key>* fd, Exploratio
     if(fe != nullptr) {
         Sequence<Key>* ptr_seq = new Block<Key>(blockSize);
     }
+
+    for(int i = 0; i < tableSize;  i++) {
+        vHashTable.push_back(Sequence<Key>* ptr_seq = new List<Key>();)
+    }
+
 }
 
 template<class Key>
