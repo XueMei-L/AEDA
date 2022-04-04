@@ -8,7 +8,7 @@ template<class Key>
 class feDoble: public FunctionExploracion<Key>
 {
 private:
-    feDoble<Key>*   feDoble_;       //funcion de dispersion
+    feDoble<Key>* feDoble_;       //funcion de dispersion
     int nCeldas_;
 public:
 

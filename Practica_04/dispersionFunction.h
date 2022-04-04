@@ -1,4 +1,5 @@
-
+#ifndef FD_BASE
+#define FD_BASE
 
 template<class Key>
 class DispersionFunction {
@@ -16,3 +17,4 @@ DispersionFunction<Key>::DispersionFunction():DispersionFunction(){}
 template<class Key>
 DispersionFunction<Key>::~DispersionFunction(){}
 
+#endif //FD_BASE
