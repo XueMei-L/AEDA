@@ -2,7 +2,6 @@
 #define FD_MODULE_H
 
 #include "dispersionFunction.h"
-#include <iostream>
 
 template<class Key>
 class fdModule: public DispersionFunction<Key>
@@ -26,7 +25,6 @@ fdModule<Key>::~fdModule(){}
 
 template<class Key>
 unsigned fdModule<Key>::operator()(const Key& k) const {
-    std::cout << "module";
     return k % tableSize;
 }
 

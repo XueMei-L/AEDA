@@ -13,7 +13,7 @@ template<class Key>
 class HashTable {
     private:
         int tableSize_;
-        int blockSize_;
+        int blockSize;
         std::vector<Sequence<Key>*> vHashTable_; 
         DispersionFunction<Key>* fd_;
         ExplorationFunction<Key>* fe_;
@@ -33,14 +33,10 @@ template<class Key>
 HashTable<Key>::HashTable(int tableSize, DispersionFunction<Key>* fd, ExplorationFunction<Key>* fe, int blockSize) : tableSize_(tableSize) {
 
     if(fe == nullptr) {
-        fd_ = fd;
         ptr_seq_ = new List<Key>();
     }
 
     if(fe != nullptr) {
-        fd_ = fd;
-        fe_ = fe;
-        blockSize_ = blockSize; 
         ptr_seq_ = new Block<Key>(blockSize);
     }
 
@@ -61,9 +57,20 @@ template<class Key>
 bool HashTable<Key>::search(const Key& k) const 
 {
     // Buscar la posicion deberia encontrarse
-    int pos = fd_->operator()(k);
+    int pos = (*fd_)(k);
     if(vHashTable_[pos]->search(k)) {
         return true;
+    }
+
+    // Buscar en otra posicion (respecto a la funcion de exploracion)
+    int i = 0;
+    pos = ((*fd_)(k) + (*fe_)(k, i)) % tableSize_;
+    i++;
+
+    while (!vHashTable_[pos]->search(k))
+    {
+        pos = ((*fd_)(k) + (*fe_)(k, i)) % tableSize_;
+        i++;
     }
 
     return true;
@@ -72,12 +79,22 @@ bool HashTable<Key>::search(const Key& k) const
 template<class Key>
 bool HashTable<Key>::insert(const Key& k)
 { 
-    std::cout << "Insertando...\n";
+    // std::cout << "Insertando...\n";
+    // int pos = (*fd_)(k);
+    // std::cout << "Clave " << k << " inserta en la pos " << pos << "\n";
 
-    //obtener la posicion con funcion de dispersion
+    // int i = 0;
 
-    int pos = fd_->operator()(k);
+    // while(!vHashTable_[pos]->insert(k))
+    // {
+    //     pos = ((*fd_)(k) + (*fe_)(k, i++)) % tableSize_;
+    //     std::cout << "en la pos:" << pos << ", valor de i es:" << i << "\n";
+    // }
+    // return true;
 
+    //Hallamos la posicion de la Clave mediante la FDispersion
+
+    int pos = (*fd_)(k);
     std::cout << "Clave: " << k << " - POS: " << pos << "\n";
     
     int i = 0;    
@@ -86,7 +103,7 @@ bool HashTable<Key>::insert(const Key& k)
     while(!vHashTable_[pos]->insert(k))
     {
         //Aplicamos la funcion de exploracion
-        pos = (fd_->operator()(k) + fe_->operator()(k,i++)) % tableSize_;
+        pos = ((*fd_)(k) + (*fe_)(k,i++)) % tableSize_;
     }
 
     return true;

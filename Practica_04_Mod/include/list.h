@@ -21,7 +21,6 @@ class List: public Sequence<Key>
         bool search(const Key& k) const;
         bool insert(const Key& k);
         bool isFull() const; 
-        void show() const;
 };
 
 template<class Key>
@@ -78,21 +77,6 @@ template<class Key>
 bool List<Key>::isFull() const 
 { 
     return false; 
-} 
-
-template<class Key>
-void List<Key>::show() const 
-{ 
-    std::cout << "Show List\n";
-    // Node<Key> *temp = m_head;
-    // while(temp) {
-    //     temp->print();
-    //     temp = temp->next;
-    //     // if(temp->data) {
-    //     //     std::cout << temp->data ;
-    //     // }
-    //     // temp = temp->next;
-    // }
 } 
 
 #endif //LIST_H
