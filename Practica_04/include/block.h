@@ -2,12 +2,13 @@
 #define BLOCK_H
 
 #include "sequence.h"
-
+#include <vector>
 template<class Key>
 class Block: public Sequence<Key>
 {
     private:
         int blockSize_;
+        std::vector<Key*> vBlock_;
     public:
         Block(int);
         ~Block();
@@ -24,14 +25,33 @@ template<class Key>
 Block<Key>::~Block(){}
 
 template<class Key>
-bool Block<Key>::search(const Key& k) const { return true; }
+bool Block<Key>::search(const Key& k) const
+{ 
+    for(int i = 0; i < blockSize_; i++) {
+        if(*vBlock_[i] == k) {
+            return true;
+        }
+    }
+    return false; 
+}
 
 template<class Key>
-bool Block<Key>::insert(const Key& k){ return true; }
+bool Block<Key>::insert(const Key& k)
+{ 
+    if(!isFull()) {
+        vBlock_.push_back(new Key(k));
+        return true;
+    }
+    return true; 
+}
 
 template<class Key>
 bool Block<Key>::isFull() const 
 {
+    if(vBlock_.size() == blockSize_) 
+    {
+        return true;
+    }
     return false;
 }
 

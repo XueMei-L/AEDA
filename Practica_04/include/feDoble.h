@@ -2,13 +2,14 @@
 #define feDoble_H
 
 #include "explorationFunction.h"
+#include "dispersionFunction.h"
 
 template<class Key>
 
 class feDoble: public ExplorationFunction<Key>
 {
 private:
-    feDoble<Key>* feDoble_;       //funcion de dispersion
+    DispersionFunction<Key>* fdDoble_;       //funcion de dispersion
     int nCeldas_;
 public:
 
@@ -22,7 +23,7 @@ public:
 template<class Key>
 feDoble<Key>::feDoble(int numCeldas):nCeldas_(numCeldas)
 {
-    // feDoble_ = new dispersionPrima<Key>(nCeldas);
+    // fdDoble_ = new fdModule<Key>(numCeldas);
 }
 
 
@@ -32,7 +33,7 @@ feDoble<Key>::~feDoble(){}
 
 template<class Key>
 unsigned feDoble<Key>::operator()(const Key& k, unsigned i) const {
-    // return *feDoble_(k) * i;
+    // return *fdDoble_(k) * i;
 }
 
 #endif //feDoble_H

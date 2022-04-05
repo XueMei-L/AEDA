@@ -142,7 +142,11 @@ int main(int argc, char *argv[]) {
             Key k;
             std::cout << "Qué clave deseas buscar:";
             std::cin >> k;
-            ptr_hashtabla->search(k);
+            if(ptr_hashtabla->search(k)) {
+                std::cout << "La clave " << k << " está dentro de la secuencia.";
+            }else{
+                std::cout << "La clave " << k << " no está dentro de la secuencia.";
+            }
         }
         break;
         case 2:
