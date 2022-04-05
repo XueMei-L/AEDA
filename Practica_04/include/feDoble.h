@@ -3,6 +3,7 @@
 
 #include "explorationFunction.h"
 #include "dispersionFunction.h"
+#include "fdPseudoaleatorio.h"
 
 template<class Key>
 
@@ -21,9 +22,10 @@ public:
 };
 
 template<class Key>
-feDoble<Key>::feDoble(int numCeldas):nCeldas_(numCeldas)
+feDoble<Key>::feDoble(int numCeldas) : nCeldas_(numCeldas)
 {
-    // fdDoble_ = new fdModule<Key>(numCeldas);
+    // usando la funcion de diserpsion pseudoaleatorio
+    fdDoble_ = new fdPseudorandom<Key>(numCeldas);
 }
 
 
@@ -33,7 +35,7 @@ feDoble<Key>::~feDoble(){}
 
 template<class Key>
 unsigned feDoble<Key>::operator()(const Key& k, unsigned i) const {
-    // return *fdDoble_(k) * i;
+    return i * (*fdDoble_)(k);
 }
 
 #endif //feDoble_H

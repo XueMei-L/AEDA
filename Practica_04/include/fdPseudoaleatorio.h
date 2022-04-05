@@ -9,7 +9,7 @@ class fdPseudorandom: public DispersionFunction<Key>
 {
 private:
     /* data */
-    unsigned tableSize;
+    unsigned tableSize_;
 public:
 
     fdPseudorandom(const unsigned n);
@@ -19,7 +19,7 @@ public:
 };
 
 template<class Key>
-fdPseudorandom<Key>::fdPseudorandom(const unsigned n): tableSize(n){}
+fdPseudorandom<Key>::fdPseudorandom(const unsigned n): tableSize_(n){}
 
 template<class Key>
 fdPseudorandom<Key>::~fdPseudorandom(){}
@@ -27,7 +27,7 @@ fdPseudorandom<Key>::~fdPseudorandom(){}
 template<class Key>
 unsigned fdPseudorandom<Key>::operator()(const Key& k) const {
     srand(k);
-    return rand() % tableSize;
+    return rand() % tableSize_;
     // return srand(k);
 }
 

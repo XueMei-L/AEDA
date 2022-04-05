@@ -29,16 +29,16 @@ List<Key>::~List() {}
 template<class Key>
 bool List<Key>::search(const Key& k) const 
 {
-    std::list<int>::iterator it;
+    // std::list<int>::iterator it;
     
-    if(list_.empty()) {
-        return false;
-    }
-    it = std::find(list_.begin(), list_.end(), k);
+    // if(list_.empty()) {
+    //     return false;
+    // }
+    // it = std::find(list_.begin(), list_.end(), k);
 
-    if(it != list_.end()) {
-        return true;
-    }
+    // if(it != list_.end()) {
+    //     return true;
+    // }
     // for(it = list_.begin(); it != list_.end(); it++) {
     //     if(it-> == k) {
     //         return true;
@@ -51,7 +51,7 @@ bool List<Key>::search(const Key& k) const
 template<class Key>
 bool List<Key>::insert(const Key& k)
 { 
-    // list_.push_back(k);
+    list_.push_back(new Key(k));
     return true; 
 }
 
