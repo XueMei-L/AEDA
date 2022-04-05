@@ -2,15 +2,18 @@
 #define LIST_H
 
 #include "sequence.h"
-#include <algorithm>
+// #include <algorithm>
 #include <list>
+#include "node.h"
+#include "../src/Node.cc"
 
 template<class Key>
 class List: public Sequence<Key>
 {
     private:
         std::list<Key*> list_;
-
+        Node<Key> *m_head;
+        int m_num_nodes;
     public:
         List();
         ~List();
@@ -21,7 +24,10 @@ class List: public Sequence<Key>
 };
 
 template<class Key>
-List<Key>::List() {}
+List<Key>::List() {
+    m_num_nodes = 0;
+    m_head = NULL;
+}
 
 template<class Key>
 List<Key>::~List() {}
@@ -29,29 +35,41 @@ List<Key>::~List() {}
 template<class Key>
 bool List<Key>::search(const Key& k) const 
 {
-    // std::list<int>::iterator it;
-    
-    // if(list_.empty()) {
-    //     return false;
-    // }
-    // it = std::find(list_.begin(), list_.end(), k);
+    Node<Key> *temp = m_head;
 
-    // if(it != list_.end()) {
-    //     return true;
-    // }
-    // for(it = list_.begin(); it != list_.end(); it++) {
-    //     if(it-> == k) {
-    //         return true;
-    //     }
-    // }
-    return false; 
+    while(temp) {
+        if(temp->data == k) {
+            return true;
+        }
+        temp = temp->next;
+    }
+    return false;
 
 }
 
 template<class Key>
 bool List<Key>::insert(const Key& k)
 { 
-    list_.push_back(new Key(k));
+    bool check;
+    check = search(k);
+    if(check == true) {
+        return false;
+    }else {
+        Node<Key> *new_node = new Node<Key> (k);
+        Node<Key> * temp = m_head;
+
+        // si es no existe mi cabecera, el nodo actual es el primer nodo
+        if(!m_head) {
+            m_head = new_node;
+        }else {
+            while(temp->next != NULL) {
+                temp = temp->next;
+            }
+            temp->next = new_node;
+        }
+    m_num_nodes++;
+    }
+    // list_.push_back(new Key(k));
     return true; 
 }
 
@@ -60,6 +78,5 @@ bool List<Key>::isFull() const
 { 
     return false; 
 } 
-
 
 #endif //LIST_H

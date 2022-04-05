@@ -25,6 +25,16 @@ template<class Key>
 feRedispersion<Key>::feRedispersion(int numCeldas): nCeldas_(numCeldas)
 {
     // feRedispersion_ = new dispersionPrima<Key>(nCeldas);
+    // srand(time(NULL));
+    // switch (rand()%3)
+    // {
+    //     case 0: feRedispersion_ = new fdModule<Clave>(nCeldas);
+    //     break;
+    //     case 1: feRedispersion_ = new fdSum<Clave>(nCeldas);
+    //     break;
+    //     case 2: feRedispersion_ = new fdPseudorandom<Clave>(nCeldas);
+    //     break;
+    // }
 }
 
 template<class Key>
@@ -34,7 +44,14 @@ feRedispersion<Key>::~feRedispersion(){}
 template<class Key>
 unsigned feRedispersion<Key>::operator()(const Key& k, unsigned i) const {
     // return *feRedispersion_(k);
-
+    // int explore (Key x, int i) {
+    //         for (int j=0;j< i; j++){
+    //             long int semilla = x;
+    //             srand(semilla);
+    //         }
+    //         return rand() % nCeldas_;
+    // }
+}
     // srand(i+k);
     // switch (rand()%3)
     // {
@@ -50,6 +67,6 @@ unsigned feRedispersion<Key>::operator()(const Key& k, unsigned i) const {
     //     break;
     // }
     // return ((*feRedispersion_)(k)+i) % nCeldas_;
-}
+
 
 #endif //FE_REDISPERSION_H

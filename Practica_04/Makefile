@@ -13,7 +13,7 @@ run:
 		clear
 		./$(BIN)/$(EXECUTABLE)
 
-$(BIN)/$(EXECUTABLE): $(SRC)/*.cpp
+$(BIN)/$(EXECUTABLE): $(SRC)/*.cc
 		$(CXX) $(CXX_FLAGS) $^ -o $@ $(LIBRARIES)
 
 clean:
