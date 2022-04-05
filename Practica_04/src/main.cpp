@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 
     // Preguntar que tipo de funcion dispersion desea
     int typeFuncDispersion;
-    std::cout << "Elijas una funcion de dispersion:" 
+    std::cout << "\nElijas una funcion de dispersion:" 
               << "\n1. Modulo"
               << "\n2. Basada en la suma"
               << "\n3. Pseudoaleatorio"
@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
     }
         
     int techniqueDispersion;
-    std::cout << "Qué tecnica de dispersion desea:"
+    std::cout << "\nQué tecnica de dispersion desea:"
               << "\n1. Dispersion abierta"
               << "\n2. Dispersion cerrada"
               << "\nTu elección es:"; 
@@ -74,16 +74,16 @@ int main(int argc, char *argv[]) {
     case 2: {
 
         int funcExploracion;
-        std::cout << "Qué tecnica de dispersion desea:"
-                << "\n1. Exploración Lineal"
-                << "\n2. Exploración Cuadratica"
-                << "\n3. Doble exploración"
-                << "\n4. Exploración Redispersion"
-                << "\nTu elección es:"; 
+        std::cout << "\nQué tecnica de dispersion desea:"
+                  << "\n1. Exploración Lineal"
+                  << "\n2. Exploración Cuadratica"
+                  << "\n3. Doble exploración"
+                  << "\n4. Exploración Redispersion"
+                  << "\nTu elección es:"; 
         std::cin >> funcExploracion;
 
         int blockSize;
-        std::cout << "Qué tamaño de bloque deseas:";
+        std::cout << "\nQué tamaño de bloque deseas:";
         std::cin >> blockSize;       
 
         ExplorationFunction<Key>* ptr_fe;
@@ -91,24 +91,24 @@ int main(int argc, char *argv[]) {
         switch (funcExploracion)
             {
             case 1:
-                {
-                    ptr_fe = new feLineal<Key>();
-                }
-                break;
+            {
+                ptr_fe = new feLineal<Key>();
+            }
+            break;
             case 2:
-                {
-                    ptr_fe = new feCuadratica<Key>();
-                }
-                break;
+            {
+                ptr_fe = new feCuadratica<Key>();
+            }
+            break;
             case 3:
-                {
-                    ptr_fe = new feDoble<Key>(blockSize);
-                }
-                break;
+            {
+                ptr_fe = new feDoble<Key>(blockSize);
+            }
+            break;
             case 4:
-                {
-                    ptr_fe = new feRedispersion<Key>(blockSize);
-                }
+            {
+                ptr_fe = new feRedispersion<Key>(blockSize);
+            }
             default:
                 std::cout << "No es una opcion correcta, vuelva a indicar" << std::endl;
                 break;
@@ -118,21 +118,22 @@ int main(int argc, char *argv[]) {
             // default:
             //     std::cout << "No es una opcion correcta, vuelva a indicar" << std::endl;
             // break;
-        }
-        break;
+
+        // break;
+    }
     }
 
     // Menu:
     bool stop = false;
-    while (stop)
+    while (stop == false)
     {
         int choise;
-        std::cout << "Qué operacion deseas realizar:"
+        std::cout << "\nQué operacion deseas realizar:"
                   << "\n1. Buscar()"
                   << "\n2. Insertar()"
                   << "\n3. Mostrar()"                  
-                  << "\n3. Salir del programa"
-                  << "Tu seleccion:";
+                  << "\n4. Salir del programa"
+                  << "\nTu seleccion:";
         std::cin >> choise;
         switch (choise)
         {
