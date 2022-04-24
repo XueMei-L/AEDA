@@ -26,7 +26,7 @@ Seleccion<Key>::~Seleccion() {}
 template<class Key>
 unsigned Seleccion<Key>::sort(const Key& k, unsigned i)const {
     std::cout << "Metodo de seleccion... \nLlamar a metodo seleccion()... \n";
-    ordenacionSeleccion();
+    // ordenacionSeleccion(k, i);
 }
 
 #endif //SELECCION_H

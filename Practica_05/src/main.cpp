@@ -17,7 +17,11 @@ int main(int argc, char *argv[]) {
     std::cin >> nSeq;
 
     Ordenacion<Key>* ptr_ord;
+    
+    Key k = 123;
+    
     ptr_ord = new Seleccion<Key>();
+    // ptr_ord->sort(k, nSeq);
 
     // Preguntar que tipo de algoritmo de ordenacion
     // int selectAlgorithm;
@@ -28,8 +32,8 @@ int main(int argc, char *argv[]) {
     //             << "\n1. Seleccion"
     //             << "\n2. QuickSort"
     //             << "\n3. ShellSort"
-    //             << "\n3. HeapSort"
-    //             << "\n3. RadixSort"
+    //             << "\n4. HeapSort"
+    //             << "\n5. RadixSort"
     //             << "\nTu seleccion es:"; 
     //     std::cin >> selectAlgorithm;
     //     std::cout << "Your seleccion is:" << selectAlgorithm;
