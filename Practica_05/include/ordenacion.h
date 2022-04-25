@@ -9,7 +9,7 @@ class Ordenacion {
         /* data */
     public:
         // Hay que implementarlo en la subclase
-        virtual std::vector<Key> sort(const std::vector<Key>& seq, unsigned i) const = 0;
+        virtual void sort(const std::vector<Key>& seq, unsigned i) const = 0;
 };
 
 #endif //ORDENACION_H

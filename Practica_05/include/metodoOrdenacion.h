@@ -3,8 +3,7 @@
 #include <iostream>
 #include <vector>
 
-// FUNCIONA
-// ordenacionSeleccion----------------------------------------------------
+// ----------------- ordenacionSeleccion -------------------
 template<class Key>
 void ordenacionSeleccion(std::vector<Key> sec, int n) {
     int min;
@@ -28,9 +27,8 @@ void ordenacionSeleccion(std::vector<Key> sec, int n) {
         }
     }
 }
-// // ordenacionSeleccion----------------------------------------------------
 
-// // ordenacionqQuickSort----------------------------------------------------
+// ----------------------- ordenacionQuickSort -------------------------
 template<class Clave>
 void print(std::vector<Clave>& sec, int ini, int fin, Clave pivote)
 {
@@ -80,40 +78,38 @@ std::vector<Key> ordenacionQuickSort(std::vector<Key> sec, int ini, int fin) {
     if( i < fin ) ordenacionQuickSort(sec,i,fin);
     return sec;
 }
-// ordenacionqQuickSort----------------------------------------------------
-
-// // ShellSort----------------------------------------------------
-// template<class Key>
-// std::vector<Key> ordenacionShellSort(std::vector<Key> sec, int n)
-// {
-//     std::cout << "ShellSort...";
-//     int delta = n ;
-//     while (delta > 1){
-//         delta = delta / 2 ;
-//         deltasort(delta, sec, n);
-//     } ;
-//     return sec;
-// }
-
-// template<class Key>
-// void deltasort(int delta, std::vector<Key>& sec, int n)
-// {
-//     for(int i = delta; i < n; i++)
-//     {
-//         Key x = sec[i];
-//         int j = i;
-//         while((j >= delta) && (x < sec[j-delta]))
-//         {
-//             sec[j] = sec[j-delta];
-//             j = j - delta;
-//         }
-//         sec[j] = x;
-//     }
-// }
-// // ShellSort----------------------------------------------------
 
 
-// // HeapSort----------------------------------------------------
+// ----------------------- ordenacionShellSort -------------------------
+template<class Key>
+void deltasort(int delta, std::vector<Key>& sec, int n)
+{
+    for(int i = delta; i < n; i++)
+    {
+        Key x = sec[i];
+        int j = i;
+        while((j >= delta) && (x < sec[j-delta]))
+        {
+            sec[j] = sec[j-delta];
+            j = j - delta;
+        }
+        sec[j] = x;
+    }
+}
+
+template<class Key>
+std::vector<Key> ordenacionShellSort(std::vector<Key> sec, int n)
+{
+    std::cout << "ShellSort...";
+    int delta = n ;
+    while (delta > 1){
+        delta = delta / 2 ;
+        deltasort(delta, sec, n);
+    } ;
+    return sec;
+}
+
+// ----------------------- ordenacionHeapSort -------------------------
 template<class Key>
 void swap(Key& a, Key& b)
 {
@@ -148,20 +144,26 @@ void baja(int i, std::vector<Key>& sec, int n)
 
 template<class Key>
 std::vector<Key> ordenacionHeapSort(std::vector<Key> sec, int n) {
-    std::cout << "Hello World";
-
     for (int i = n/2-1; i >= 0; i--) {
         baja(i, sec, n);
+        # ifdef X
+            for(auto value: sec) {
+            std::cout << "\t" << value;
+            }
+            std::cout << "\n";
+        # endif
     }
     for (int i = n-1; i >= 0; i--) {
         swap(sec[0], sec[i]);
         baja(0, sec, i);
+        # ifdef X
+            for(auto value: sec) {
+            std::cout << "\t" << value;
+            }
+            std::cout << "\n";
+        # endif
     }
-    for(auto value: sec) {
-        std::cout << "\nOrdenar HEAPSORT DENTRO Value = " << value;
-    }
-    
     return sec;
 }
 
-// // HeapSort----------------------------------------------------
+// ----------------------- ordenacionRadiaSort -------------------------

@@ -65,13 +65,13 @@ int main(int argc, char *argv[]) {
             ptr_orden = new QuickSort<Key>();
             break;
         case 3:
-            // ptr_orden = new HeapSort<Key>();
+            ptr_orden = new ShellSort<Key>();
             break;
         case 4:
             ptr_orden = new HeapSort<Key>();
             break;
         case 5:
-            // ptr_orden = new HeapSort<Key>();
+            // ptr_orden = new RadixSort<Key>();
             break;
         default:
             std::cout << "No es una opción valida, vuelva a ejecutar el programa." << std::endl;

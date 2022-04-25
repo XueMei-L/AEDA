@@ -8,6 +8,7 @@
 #include "./ordSeleccion.h"
 #include "./ordQuickSort.h"
 #include "./ordHeapSort.h"
+#include "./ordShellSort.h"
 
 template<class Key>
 class Sort

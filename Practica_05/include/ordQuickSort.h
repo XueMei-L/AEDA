@@ -15,7 +15,7 @@ class QuickSort: public Ordenacion<Key>
         QuickSort();
         ~QuickSort();
         // Hay que implementarlo en la subclase
-        std::vector<Key> sort(const std::vector<Key>& seq, unsigned i) const;
+        void sort(const std::vector<Key>& seq, unsigned i) const;
 };
 
 template<class Key>
@@ -25,10 +25,9 @@ template<class Key>
 QuickSort<Key>::~QuickSort() {}
 
 template<class Key>
-std::vector<Key> QuickSort<Key>::sort(const std::vector<Key>& seq, unsigned i) const {
+void QuickSort<Key>::sort(const std::vector<Key>& seq, unsigned i) const {
     std::cout << "\nMetodo de QuickSort...\n";
-    // ordenacionQuickSort(seq, 0, i-1);
-    return seq;
+    ordenacionQuickSort(seq, 0, i-1);
 }
 
 #endif //QUICKSORT_H
