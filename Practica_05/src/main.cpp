@@ -78,9 +78,10 @@ int main(int argc, char *argv[]) {
             break;
         }
         ptr_sort->SetMethod(ptr_orden);
+        ptr_sort->SortSeq();
 
         std::string sortAgain;
-        std::cout << "Deseas ordenar con otro algoritmo?(y/n)";
+        std::cout << "Deseas ordenar con otro algoritmo?(y/n):";
         std::cin >> sortAgain;
         if(sortAgain == "y" || sortAgain == "Y") {
             stop = false;

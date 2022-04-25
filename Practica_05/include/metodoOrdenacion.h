@@ -1,14 +1,4 @@
-//             << "\n1. Seleccion"
-//             << "\n2. QuickSort"
-//             << "\n3. ShellSort"
-//             << "\n3. HeapSort"
-//             << "\n3. RadixSort"
-
-// void () {
-// # ifdef x
-// 		cout << xxx;
-// # endif
-// }
+#define X
 
 #include <iostream>
 #include <vector>
@@ -29,10 +19,12 @@ void ordenacionSeleccion(std::vector<Key> sec, int n) {
             x = sec[min];
             sec[min] = sec[i];
             sec[i] = x;
-            for(auto value: sec) {
-            std::cout << "\t" << value;
-            }
-            std::cout << "\n";
+            # ifdef X
+                for(auto value: sec) {
+                std::cout << "\t" << value;
+                }
+                std::cout << "\n";
+            # endif
         }
     }
 }
@@ -77,6 +69,12 @@ std::vector<Key> ordenacionQuickSort(std::vector<Key> sec, int ini, int fin) {
             f--;
         }
     }
+    # ifdef X
+        for(auto value: sec) {
+        std::cout << "\t" << value;
+        }
+        std::cout << "\n";
+    # endif
     
     if( ini < f ) ordenacionQuickSort(sec,ini,f);
     if( i < fin ) ordenacionQuickSort(sec,i,fin);
