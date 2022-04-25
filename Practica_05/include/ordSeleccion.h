@@ -2,6 +2,7 @@
 #define SELECCION_H
 
 #include <iostream>
+#include <vector>
 #include "ordenacion.h"
 #include "MetodoOrdenacion.h"
 
@@ -14,7 +15,7 @@ class Seleccion: public Ordenacion<Key>
         Seleccion();
         ~Seleccion();
         // Hay que implementarlo en la subclase
-        unsigned sort(const Key& k, unsigned i) const;
+        unsigned sort(const std::vector<Key>& seq, unsigned i) const;
 };
 
 template<class Key>
@@ -24,9 +25,9 @@ template<class Key>
 Seleccion<Key>::~Seleccion() {}
 
 template<class Key>
-unsigned Seleccion<Key>::sort(const Key& k, unsigned i)const {
+unsigned Seleccion<Key>::sort(const std::vector<Key>& seq, unsigned i)const {
     std::cout << "Metodo de seleccion... \nLlamar a metodo seleccion()... \n";
-    // ordenacionSeleccion(k, i);
+    // ordenacionSeleccion(seq, i);
 }
 
 #endif //SELECCION_H
