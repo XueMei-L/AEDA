@@ -16,8 +16,7 @@
 // FUNCIONA
 // ordenacionSeleccion----------------------------------------------------
 template<class Key>
-std::vector<Key> ordenacionSeleccion(std::vector<Key> sec, int n) {
-    std::cout << "Hello World";
+void ordenacionSeleccion(std::vector<Key> sec, int n) {
     int min;
     Key x;
 
@@ -30,38 +29,58 @@ std::vector<Key> ordenacionSeleccion(std::vector<Key> sec, int n) {
             x = sec[min];
             sec[min] = sec[i];
             sec[i] = x;
+            for(auto value: sec) {
+            std::cout << "\t" << value;
+            }
+            std::cout << "\n";
         }
     }
-    for(auto value: sec) {
-        std::cout << "\nValue = " << value;
-    }
-    return sec;
 }
 // // ordenacionSeleccion----------------------------------------------------
 
 // // ordenacionqQuickSort----------------------------------------------------
+template<class Clave>
+void print(std::vector<Clave>& sec, int ini, int fin, Clave pivote)
+{
+    //Codigo de Colores
+    //Red: 31 - Green: 32 - Blue: 34
+    std::cout << " Pivote: " << pivote << "\t";
+    for(int i = 0; i < sec.size(); i++)
+    {
+    if(i == ini)
+        std::cout << "\e[34m" << sec[i] << " ";
+    else if(i == fin)
+        std::cout << "\e[32m" << sec[i] << " ";
+    else
+        std::cout << "\e[0m" << sec[i] << " ";
+    std::cout << "\e[0m";
+    }
+    std::cout << "\n";
+}
+
 template<class Key>
-std::vector<Key> ordenacionQuickSort(std::vector<Key>& v, int ini, int fin) {
+std::vector<Key> ordenacionQuickSort(std::vector<Key> sec, int ini, int fin) {
     
     int i = ini;
     int f = fin;
-    Key p = v[(i+f)/2];
+    Key p = sec[(i+f)/2];
     Key x;
 
     while( i <= f){
-        while (v[i] < p) { i++; }
-        while (v[f] > p) { f--; }
+        while (sec[i] < p) { i++; }
+        while (sec[f] > p) { f--; }
         if( i <= f ){
-            x = v[i];
-            v[i] = v[f];
-            v[f] = x;
+            x = sec[i];
+            sec[i] = sec[f];
+            sec[f] = x;
             i++;
             f--;
         }
     }
     
-    if( ini < f ) ordenacionQuickSort(v,ini,f);
-    if( i < fin ) ordenacionQuickSort(v,i,fin);
+    if( ini < f ) ordenacionQuickSort(sec,ini,f);
+    if( i < fin ) ordenacionQuickSort(sec,i,fin);
+    return sec;
 }
 // ordenacionqQuickSort----------------------------------------------------
 

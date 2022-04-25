@@ -27,7 +27,7 @@ QuickSort<Key>::~QuickSort() {}
 template<class Key>
 std::vector<Key> QuickSort<Key>::sort(const std::vector<Key>& seq, unsigned i) const {
     std::cout << "\nMetodo de QuickSort...\n";
-    // ordenacionQuickSort(seq, 0, a);
+    // ordenacionQuickSort(seq, 0, i-1);
     return seq;
 }
 

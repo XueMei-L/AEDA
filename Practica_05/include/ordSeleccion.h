@@ -28,6 +28,7 @@ template<class Key>
 std::vector<Key> Seleccion<Key>::sort(const std::vector<Key>& seq, unsigned i) const {
     std::cout << "\nMetodo de seleccion...\n";
     ordenacionSeleccion(seq, i);
+
     return seq;
 }
 
