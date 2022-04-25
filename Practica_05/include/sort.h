@@ -6,19 +6,21 @@
 
 #include "./ordenacion.h"
 #include "./ordSeleccion.h"
+#include "./ordQuickSort.h"
+#include "./ordHeapSort.h"
 
 template<class Key>
 class Sort
 {
     private:
-    std::vector<Key>& _seq;
-    int _seqSize;
-    void copyOrdSeq(std::vector<Key>&);
+        std::vector<Key>& _seq;
+        int _seqSize;
+        void copyOrdSeq(std::vector<Key>&);
 
     public:
-    Sort();
-    Sort(std::vector<Key>&, int);
-    ~Sort();
+        Sort();
+        Sort(std::vector<Key>&, int);
+        ~Sort();
 
 };
 
@@ -50,19 +52,36 @@ Sort<Key>::Sort(std::vector<Key>& seq, int n): _seq(seq), _seqSize(n) {
         switch (selectAlgorithm)
         {
         case 1:
+            std::cout << "\n>>> Sort Process...";
+            
             ptr_orden = new Seleccion<Key>();
-        
-            std::cout << "\n>>> Sort Proces...";
             ptr_orden->sort(_seq, _seqSize);
+
             //std::vector<Key> copySequencuence = ptr_orden->sort();
             stop = true;
             break;
         case 2:
+            std::cout << "\n>>> Sort Process...";
+
+            ptr_orden = new QuickSort<Key>();
+            ptr_orden->sort(_seq, _seqSize);
+
             stop = true;
             break;
+
         case 3:
             stop = true;
             break;
+
+        case 4:
+            std::cout << "\n>>> Sort Process...";
+
+            ptr_orden = new HeapSort<Key>();
+            ptr_orden->sort(_seq, _seqSize);
+            
+            stop = true;
+            break;
+
         default:
             std::cout << "No es una opción valida, vuelva a ejecutar el programa." << std::endl;
             break;
@@ -78,7 +97,7 @@ Sort<Key>::Sort(std::vector<Key>& seq, int n): _seq(seq), _seqSize(n) {
         // if(mod == 0) {
         //     copyOrdSeq(copySequencuence);
         // }
-        std::cout << "Stop while";
+        std::cout << "\nStop while.";
     }
 }
 

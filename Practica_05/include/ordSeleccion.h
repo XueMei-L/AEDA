@@ -15,7 +15,7 @@ class Seleccion: public Ordenacion<Key>
         Seleccion();
         ~Seleccion();
         // Hay que implementarlo en la subclase
-        unsigned sort(const std::vector<Key>& seq, unsigned i) const;
+        std::vector<Key> sort(const std::vector<Key>& seq, unsigned i) const;
 };
 
 template<class Key>
@@ -25,9 +25,10 @@ template<class Key>
 Seleccion<Key>::~Seleccion() {}
 
 template<class Key>
-unsigned Seleccion<Key>::sort(const std::vector<Key>& seq, unsigned i)const {
-    std::cout << "Metodo de seleccion... \nLlamar a metodo seleccion()... \n";
-    // ordenacionSeleccion(seq, i);
+std::vector<Key> Seleccion<Key>::sort(const std::vector<Key>& seq, unsigned i) const {
+    std::cout << "\nMetodo de seleccion...\n";
+    ordenacionSeleccion(seq, i);
+    return seq;
 }
 
 #endif //SELECCION_H
