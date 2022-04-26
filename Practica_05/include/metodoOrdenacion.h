@@ -80,10 +80,10 @@ void ordenacionQuickSort(std::vector<Key> sec, int ini, int fin) {
             i++;
             f--;
 
-            # ifdef X
-                print(sec);
-            # endif
         }
+        # ifdef X
+            print(sec);
+        # endif
     }
     if( ini < f ) ordenacionQuickSort(sec, ini, f);
     if( i < fin ) ordenacionQuickSort(sec, i, fin);
@@ -177,15 +177,20 @@ void countSort(std::vector<Key> sec, int n, int exp)
 { 
     int output[n]; // output array 
     int count[10] = { 0 };
+    // std::vector<int> count(0, 10);
   
-    // Store count of occurrences in count[] 
+    // Store values in count[]
     for (int i = 0; i < n; i++) {
+        // std::cout << "\n(sec[i] / exp) % 10 = " << (sec[i] / exp) % 10;
         count[(sec[i] / exp) % 10]++; 
     }
-  
-    for (int i = 1; i < 10; i++) 
-        count[i] += count[i - 1]; 
-  
+    
+    // Calculating their cumulative count
+    for (int i = 1; i < 10; i++) {
+        count[i] += count[i - 1];
+    }
+
+    // Insert value to output according to the digit
     for (int i = n - 1; i >= 0; i--) { 
         output[count[(sec[i] / exp) % 10] - 1] = sec[i]; 
         count[(sec[i] / exp) % 10]--; 

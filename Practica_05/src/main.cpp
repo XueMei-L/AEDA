@@ -24,12 +24,12 @@ int main(int argc, char *argv[]) {
         while(stop) {
             std::cout << ">>> Introduzca [" << i+1 << "] valor de secuancias:";
             std::cin >> value;
-            // if( value > 1000 && value < 9999) {
+            if( value > 1000 && value < 9999) {
                 sequence.push_back(value);
                 stop = false;
-            // } else {
-                // std::cout << "No es un numero valido, vuelva a introducir.\n";
-            // }
+            } else {
+                std::cout << "No es un numero valido, vuelva a introducir.\n";
+            }
         }
     }
 
