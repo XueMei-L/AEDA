@@ -1,38 +1,38 @@
-#ifndef SELECCION_H
-#define SELECCION_H
+#ifndef RADIX_SORT_H
+#define RADIX_SORT_H
 
 #include <iostream>
 #include <vector>
 #include "ordenacion.h"
-#include "MetodoOrdenacion.h"
+// #include "MetodoOrdenacion.h"
 
 template<class Key>
-class Seleccion: public Ordenacion<Key>
+class RadixSort: public Ordenacion<Key>
 {
     private:
         /* data */
     public:
-        Seleccion();
-        ~Seleccion();
+        RadixSort();
+        ~RadixSort();
         // Hay que implementarlo en la subclase
         void sort(const std::vector<Key>& seq, unsigned i) const;
 };
 
 template<class Key>
-Seleccion<Key>::Seleccion() {}
+RadixSort<Key>::RadixSort() {}
 
 template<class Key>
-Seleccion<Key>::~Seleccion() {}
+RadixSort<Key>::~RadixSort() {}
 
 template<class Key>
-void Seleccion<Key>::sort(const std::vector<Key>& seq, unsigned i) const {
-    std::cout << "\nMetodo de Seleccion...\n";
+void RadixSort<Key>::sort(const std::vector<Key>& seq, unsigned i) const {
+    std::cout << "\nMetodo de RadixSort...\n";
     std::cout << "\nSeq: \e[31m";
         for(auto value: seq) {
             std::cout << "\t" << value;
         }
     std::cout << "\e[0m";
-    ordenacionSeleccion(seq, i);
+    ordenacionRadixSort(seq, i);
 }
 
-#endif //SELECCION_H
+#endif //RADIX_SORT_H

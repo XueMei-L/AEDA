@@ -27,7 +27,15 @@ ShellSort<Key>::~ShellSort() {}
 template<class Key>
 void ShellSort<Key>::sort(const std::vector<Key>& seq, unsigned i) const {
     std::cout << "\nMetodo de ShellSort...\n";
-    ordenacionShellSort(seq, i);
+    double alfa;
+    std::cout << "Introduzca el valor de alfa( 0 < alfa < 1 ):";
+    std::cin >> alfa;
+    std::cout << "\nSeq: \e[31m";
+        for(auto value: seq) {
+            std::cout << "\t" << value;
+        }
+    std::cout << "\e[0m";
+    ordenacionShellSort(seq, i, alfa);
 }
 
 #endif //SHELLSORT_H

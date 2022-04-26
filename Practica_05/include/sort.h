@@ -9,6 +9,7 @@
 #include "./ordQuickSort.h"
 #include "./ordHeapSort.h"
 #include "./ordShellSort.h"
+#include "./ordRadixSort.h"
 
 template<class Key>
 class Sort
@@ -39,10 +40,8 @@ Sort<Key>::~Sort() {}
 template<class Key>
 void Sort<Key>::SetMethod(Ordenacion<Key>* pointer) {
     if(ptr_sort_ == nullptr) {
-        std::cout << "Null";
         ptr_sort_ = pointer;
     } else {
-        std::cout << "delete";
         delete ptr_sort_;
         ptr_sort_ = pointer;
     }

@@ -27,6 +27,11 @@ HeapSort<Key>::~HeapSort() {}
 template<class Key>
 void HeapSort<Key>::sort(const std::vector<Key>& seq, unsigned i) const {
     std::cout << "\nMetodo de HeapSort...\n";
+    std::cout << "\nSeq: \e[31m";
+        for(auto value: seq) {
+            std::cout << "\t" << value;
+        }
+    std::cout << "\e[0m";
     ordenacionHeapSort(seq, i);
 }
 
