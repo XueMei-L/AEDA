@@ -146,7 +146,6 @@ void baja(int i, std::vector<Key>& sec, int n)
         if (sec[dad] > sec[son])
             return;
         else {
-
             # ifdef X
                 printSwap(sec[dad], sec[son]);
             # endif
@@ -190,20 +189,15 @@ void countSort(std::vector<Key> sec, int n, int exp)
 { 
     int output[n]; // output array 
     int count[10] = { 0 };
-    // std::vector<int> count(0, 10);
   
-    // Store values in count[]
+    // Store count of occurrences in count[] 
     for (int i = 0; i < n; i++) {
-        // std::cout << "\n(sec[i] / exp) % 10 = " << (sec[i] / exp) % 10;
         count[(sec[i] / exp) % 10]++; 
     }
-    
-    // Calculating their cumulative count
-    for (int i = 1; i < 10; i++) {
-        count[i] += count[i - 1];
-    }
-
-    // Insert value to output according to the digit
+  
+    for (int i = 1; i < 10; i++) 
+        count[i] += count[i - 1]; 
+  
     for (int i = n - 1; i >= 0; i--) { 
         output[count[(sec[i] / exp) % 10] - 1] = sec[i]; 
         count[(sec[i] / exp) % 10]--; 
@@ -229,4 +223,49 @@ void ordenacionRadixSort(std::vector<Key> sec, int n) {
 
     for (int exp = 1; max / exp > 0; exp *= 10)
 		countSort(sec, n, exp);
+}
+
+
+template<class Key>
+void ordenacionInsercion(std::vector<Key> sec, int n) {
+        // Desde izq - derecha
+        // for (int i = 0; i < n; ++i) {
+        //         key = sec[i];
+        //         j = i-1;
+        //         while((j >= 0) && (sec[j] > key)) {
+        //                 printSwap(sec[j+1], sec[j]);
+        //                 sec[j + 1] = sec[j];
+        //                 j--;
+        //         }
+        //         sec[j+1] = key;
+        //     # ifdef X
+        //         std::cout << std::endl;
+        //         print(sec);
+        //     # endif
+        // }
+        // n = 5
+        for (int i = 1; i< n-1; i++) {
+            // i = 3
+            Key aux = sec[i];   // 4444
+            int j = i - 1;      //j = 2
+            while((j >= 0)&& sec[j] > aux) {
+                    printSwap(sec[j+1], sec[j]);
+                    sec[j+1] = sec[j];
+                    // # ifdef X
+                    //     std::cout << std::endl;
+                    //     print(sec);
+                    // # endif
+                j--;
+            }
+            // j = 4 = 4444
+            sec[j+1] = aux;
+            // # ifdef X
+            //     std::cout << std::endl;
+            //     print(sec);
+            // # endif
+        }
+         # ifdef X
+            std::cout << std::endl;
+            print(sec);
+        # endif
 }

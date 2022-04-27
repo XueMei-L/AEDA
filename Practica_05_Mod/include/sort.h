@@ -23,6 +23,7 @@
 #include "./ordHeapSort.h"
 #include "./ordShellSort.h"
 #include "./ordRadixSort.h"
+#include "./ordInsercion.h"
 
 template<class Key>
 class Sort
