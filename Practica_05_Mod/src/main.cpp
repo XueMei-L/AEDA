@@ -42,7 +42,6 @@ int main(int argc, char *argv[]) {
         for(int i = 0; i < nSeq; i++) {
             num = 1000 + rand()%(9999-1000);
             sequence[i] =  num;
-            std::cout << num << "\n" ; 
         }
     } else {
         Key value;
@@ -80,6 +79,7 @@ int main(int argc, char *argv[]) {
                 << "\n>>> 3. ShellSort"
                 << "\n>>> 4. HeapSort"
                 << "\n>>> 5. RadixSort"
+                << "\n>>> 6. Inserccion"
                 << "\nTu seleccion es:"; 
         std::cin >> selectAlgorithm;
         std::cout << ">>> Has elegido el algoritmo:" << selectAlgorithm;
@@ -100,6 +100,9 @@ int main(int argc, char *argv[]) {
             break;
         case 5:
             ptr_orden = new RadixSort<Key>();
+            break;
+        case 6:
+            ptr_orden = new Insercion<Key>();
             break;
         default:
             std::cout << "No es una opción valida, vuelva a ejecutar el programa." << std::endl;

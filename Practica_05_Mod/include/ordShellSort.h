@@ -1,3 +1,16 @@
+/********************************************************************
+* AUTOR: XueMei Lin
+* EMAIL: alu0101225845@ull.edu.es
+* UNIVERSIDAD: Universidad de La Laguna
+* ASIGNATURA: Algoritmos y estructura de datos avanzadas
+* VERSION: 1.0
+* PRACTICA: 05
+* TITUTLO: Practica 05 Ordenacion
+* DESCRIPTION: fichero .h que include sort del algoritmo ShellSort
+* COMPILACION: make
+*              make clean (para eliminar)
+* *****************************************************************/
+
 #ifndef SHELLSORT_H
 #define SHELLSORT_H
 
