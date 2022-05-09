@@ -1,21 +1,22 @@
-#pragma once
+#ifndef NODE_B_H
+#define NODE_B_H
 
 #include <cstdio>
 #include <ostream>
 
 template<class Key>
-class nodo {
+class NodoB {
 private:
 	Key data_;
-	nodo* izq_;
-	nodo* der_;
+	NodoB* izq_;
+	NodoB* der_;
     // int bal_;
 public:
-	nodo();
-	nodo(Key);
-	~nodo();
-	nodo*& get_izq(void);
-	nodo*& get_der(void);
+	NodoB();
+	NodoB(Key);
+	~NodoB();
+	NodoB*& get_izq(void);
+	NodoB*& get_der(void);
 	Key& get_data(void);
 
     void set_data(Key data);
@@ -25,46 +26,46 @@ public:
 
 // Construtor por defecto
 template<class Key>
-nodo<Key>::nodo(void): data_(), izq_(nullptr), der_(nullptr) {}
+NodoB<Key>::NodoB(void): data_(), izq_(nullptr), der_(nullptr) {}
 
 // Constructor parametrizado
 template<class Key>
-nodo<Key>::nodo(Key dato): data_(dato), izq_(nullptr), der_(nullptr) {}
+NodoB<Key>::NodoB(Key dato): data_(dato), izq_(nullptr), der_(nullptr) {}
 
 // Destructor
 template<class Key>
-nodo<Key>::~nodo(void) {}
+NodoB<Key>::~NodoB(void) {}
 
 // Getters
 template<class Key>
-nodo<Key>*& nodo<Key>::get_der(void) {
+NodoB<Key>*& NodoB<Key>::get_der(void) {
 	return der_;
 }
 
 template<class Key>
-nodo<Key>*& nodo<Key>::get_izq(void) {
+NodoB<Key>*& NodoB<Key>::get_izq(void) {
 	return izq_;
 }
 
 template<class Key>
-Key& nodo<Key>::get_data(void)  {
+Key& NodoB<Key>::get_data(void)  {
 	return data_;
 }
 
 // Setters
 template<class Key>
-void nodo<Key>::set_data(Key data)  {
+void NodoB<Key>::set_data(Key data)  {
 	data_ = data;
 }
 
-/* Imprime el nodo formateado */
+/* Imprime el NodoB formateado */
 // std::ostream& write (ostream& os) const
 // {
-//     // Si el nodo está vacío...
+//     // Si el NodoB está vacío...
 //     if (this == NULL){
 //         os << "[.]";
 //     }
-//     // Si el nodo NO está vacío...
+//     // Si el NodoB NO está vacío...
 //     else{
 //         os << "[";
 //         dato_.write(os);
@@ -75,6 +76,9 @@ void nodo<Key>::set_data(Key data)  {
 
 
 // template<class tipo_dato>
-// int& nodo<tipo_dato>::bal(void){
+// int& NodoB<tipo_dato>::bal(void){
 // 	return bal_;
 // }
+
+
+#endif //NODE_B_H
