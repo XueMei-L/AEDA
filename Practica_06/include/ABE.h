@@ -16,8 +16,10 @@ public:
     bool search(const Key& k) const;
     void remove(const Key& k);
     void showAB();
-    void inorden() const;
-	// std::ostream& operator<<(ostream& os, const Date& dt);
+    void inorden(NodoB<Key>* leap) const;
+    void callInorden();
+    // void inorden() const;
+	  // std::ostream& operator<<(ostream& os, const Date& dt);
     const int SizeBranch(NodoB<Key>* node);
     void InsertBalanceB(const Key data, NodoB<Key>* node);
 private:
@@ -30,12 +32,29 @@ ABE<Key>::ABE() : root_(nullptr){}
 template <class Key>
 ABE<Key>::~ABE() {}
 
+template<class Key>
+void
+ABE<Key>::callInorden() {
+  inorden(root_);
+}
+
+template<class Key>
+void
+ABE<Key>::inorden(NodoB<Key>* leap) const {
+	if (leap != NULL) {
+    inorden(leap->get_izq());
+	  std::cout << leap->get_data();
+    inorden(leap->get_der());
+  }
+}
+
+
 //  Insercion de arbol binario
 template <class Key>
 bool
 ABE<Key>::insert(const Key& data) {
   if(search(data)) {
-    std::cout << "Can not insert the same value to the Binary Tree.\n";
+    std::cout << ">> Can not insert the same value to the Binary Tree.\n";
     return false;
   } else {
     if (root_ == nullptr) {

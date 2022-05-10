@@ -50,9 +50,9 @@ int main(int argc, char *argv[]) {
                 std::cout << std::endl;
                 // Llamada a la funcion de insertar
                 if(ptr_AB->insert(value)) {
-                    std::cout << "Successfully to add value [" << value << "] to the Binary Tree.\n";
+                    std::cout << ">> Successfully to add value [" << value << "] to the Binary Tree.\n";
                 } else {
-                    std::cout << "Can not add the value [" << value << "] to the Binary Tree.\n";
+                    std::cout << ">> Can not add the value [" << value << "] to the Binary Tree.\n";
                 }
                 ptr_AB->showAB();
                 std::cout << ">> Do u wanna insert more value? (y/n):";
@@ -62,28 +62,28 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
-        break;
+            break;
 
         case 2:
             Key searchKey;
             std::cout << "Enter a key:";
             std::cin >> searchKey;
             if(ptr_AB->search(searchKey)) {
-                std::cout <<  "Found the key [" << searchKey << "] in the Binary Tree.\n";
+                std::cout <<  ">> Found the key [" << searchKey << "] in the Binary Tree.\n";
             } else {
-                std::cout << "Not found the key [" << searchKey << "] in the Binary Tree.\n";
+                std::cout << ">> Not found the key [" << searchKey << "] in the Binary Tree.\n";
             } 
             break;
 
         case 3:
             Key removeValue;
-            std::cout << "Enter a key:";
+            std::cout << ">> Enter a key:";
             std::cin >> removeValue;
             ptr_AB->remove(removeValue);
             break;
 
         case 4:
-            ptr_AB->showAB();
+            ptr_AB->callInorden();
             stop = true;
             break;
 
