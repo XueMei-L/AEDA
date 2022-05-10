@@ -83,8 +83,7 @@ int main(int argc, char *argv[]) {
             break;
 
         case 4:
-            ptr_AB->callInorden();
-            stop = true;
+            ptr_AB->inorden();
             break;
 
         default:

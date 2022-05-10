@@ -16,37 +16,39 @@ public:
     bool search(const Key& k) const;
     void remove(const Key& k);
     void showAB();
-    void inorden(NodoB<Key>* leap) const;
-    void callInorden();
+    // void inorden(NodoB<Key>* leap) const;
+    // void callInorden();
     // void inorden() const;
 	  // std::ostream& operator<<(ostream& os, const Date& dt);
     const int SizeBranch(NodoB<Key>* node);
     void InsertBalanceB(const Key data, NodoB<Key>* node);
 private:
-	NodoB<Key>* root_;
+	  NodoB<Key>* rootSub_;
 };
 
 template <class Key>
-ABE<Key>::ABE() : root_(nullptr){}
+ABE<Key>::ABE() : rootSub_(nullptr) {
+  // set_root_(rootSub_);
+}
 
 template <class Key>
 ABE<Key>::~ABE() {}
 
-template<class Key>
-void
-ABE<Key>::callInorden() {
-  inorden(root_);
-}
+// template<class Key>
+// void
+// ABE<Key>::callInorden() {
+//   inorden(rootSub_);
+// }
 
-template<class Key>
-void
-ABE<Key>::inorden(NodoB<Key>* leap) const {
-	if (leap != NULL) {
-    inorden(leap->get_izq());
-	  std::cout << leap->get_data();
-    inorden(leap->get_der());
-  }
-}
+// template<class Key>
+// void
+// ABE<Key>::inorden(NodoB<Key>* leap) const {
+// 	if (leap != NULL) {
+//     inorden(leap->get_izq());
+// 	  std::cout << leap->get_data();
+//     inorden(leap->get_der());
+//   }
+// }
 
 
 //  Insercion de arbol binario
@@ -57,11 +59,12 @@ ABE<Key>::insert(const Key& data) {
     std::cout << ">> Can not insert the same value to the Binary Tree.\n";
     return false;
   } else {
-    if (root_ == nullptr) {
-      root_ = new NodoB<Key>(data, NULL, NULL);
+    if (rootSub_ == nullptr) {
+      rootSub_ = new NodoB<Key>(data, NULL, NULL);
     } else {
-      InsertBalanceB(data, root_);
+      InsertBalanceB(data, rootSub_);
     }
+    this->set_root_(rootSub_);
     return true;
   }
   return true;
@@ -90,7 +93,7 @@ bool
 ABE<Key>::search(const Key& k) const {
   std::queue<NodoB<Key>*> Q;
   NodoB<Key>* nodo;
-  Q.push(root_);
+  Q.push(rootSub_);
 
   while (!Q.empty()) {
     nodo = Q.front();
@@ -119,7 +122,7 @@ template <class Key>
 void
 ABE<Key>::showAB() {
     // std::cout << "ShowAB\n";
-    if(root_ == nullptr) {
+    if(rootSub_ == nullptr) {
         std::cout << "Arbol vacio" << std::endl;
         std::cout << "Niver 0: [.]\n";
         return;
@@ -130,7 +133,7 @@ ABE<Key>::showAB() {
     int aux = 0;
     int level{0}, current_level{0}; 
     std::cout << "Nivel " << level << ": ";
-    Q.push(root_);
+    Q.push(rootSub_);
     Q1.push(0);
 
     while (!Q.empty()) {
